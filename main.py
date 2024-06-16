@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  
 import face_recognition
 import numpy as np
 import os
@@ -7,6 +8,7 @@ import pickle
 import base64
 
 app = Flask(__name__)
+CORS(app)
 
 # Define paths
 DATA_DIR = 'face_data'
