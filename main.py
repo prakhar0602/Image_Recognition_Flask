@@ -106,7 +106,7 @@ def register_face():
 
     if encodings:
         for i, encoding in enumerate(encodings):
-            save_face_encoding(f"{face_id}_{i}", encoding)
+            save_face_encoding(f"{face_id}", encoding)
         return jsonify({"message": "Faces registered successfully"}), 200
     else:
         return jsonify({"error": "No faces detected or encoding failed"}), 400
@@ -154,4 +154,5 @@ def authenticate_face():
         return jsonify({"error": "No faces detected or encoding failed"}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
